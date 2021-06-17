@@ -17,6 +17,7 @@ extern "C"{
 #include "tsschecker.h"
 #undef VERSION_COMMIT_SHA
 #undef VERSION_COMMIT_COUNT
+#undef VERSION_RELEASE
 };
 
 #include <libgeneral/macros.h>
@@ -99,7 +100,7 @@ int main_r(int argc, const char * argv[]) {
         SetConsoleMode(handle, termFlags | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
 #endif
     int err=0;
-    printf("Version: " VERSION_COMMIT_SHA " - " VERSION_COMMIT_COUNT "\n");
+    printf("Version: " VERSION_RELEASE "(" VERSION_COMMIT_SHA "-" VERSION_COMMIT_COUNT ")\n");
     printf("%s\n",tihmstar::img4tool::version());
 #ifdef HAVE_LIBIPATCHER
     printf("%s\n",libipatcher::version());
@@ -246,7 +247,7 @@ int main_r(int argc, const char * argv[]) {
             devVals.deviceBoard = (char*)client.getDeviceBoardNoCopy();
             
             if (flags & FLAG_LATEST_SEP){
-                info("user specified to use latest signed SEP (WARNING, THIS CAN CAUSE A NON-WORKING RESTORE)\n");
+                info("user specified to use latest signed SEP\n");
                 client.loadLatestSep();
             }else if (!client.is32bit()){
                 client.loadSep(sepPath);
@@ -270,7 +271,7 @@ int main_r(int argc, const char * argv[]) {
                 printf("\n");
             }else{
                 if (flags & FLAG_LATEST_BASEBAND){
-                    info("user specified to use latest signed baseband (WARNING, THIS CAN CAUSE A NON-WORKING RESTORE)\n");
+                    info("user specified to use latest signed baseband\n");
                     client.loadLatestBaseband();
                 }else{
                     client.setBasebandPath(basebandPath);
