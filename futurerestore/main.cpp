@@ -44,7 +44,8 @@ static struct option longopts[] = {
     { "debug",              no_argument,            NULL, 'd' },
     { "exit-recovery",      no_argument,            NULL, 'e' },
     { "latest-sep",         no_argument,            NULL, '0' },
-    { "latest-baseband",    no_argument,            NULL, '1' },
+    { "sep-select",         no_argument,            NULL, '0' },
+    { "latest-baseband",    required_argument,      NULL, '0' },
     { "no-baseband",        no_argument,            NULL, '2' },
 #ifdef HAVE_LIBIPATCHER
     { "use-pwndfu",         no_argument,            NULL, '3' },
@@ -84,7 +85,7 @@ void cmd_help(){
     printf("      --latest-sep\t\tUse latest signed SEP instead of manually specifying one (may cause bad restore)\n");
     printf("  -s, --sep PATH\t\tSEP to be flashed\n");
     printf("  -m, --sep-manifest PATH\tBuildManifest for requesting SEP ticket\n");
-        
+    printf("      --sep-select BUILDID\t\t Download and use SEP from a specified version from the BuildID\n")
     printf("\nOptions for baseband:\n");
     printf("      --latest-baseband\t\tUse latest signed baseband instead of manually specifying one (may cause bad restore)\n");
     printf("  -b, --baseband PATH\t\tBaseband to be flashed\n");
